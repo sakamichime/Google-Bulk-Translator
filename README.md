@@ -62,8 +62,6 @@
 
 - PNG
 - JPG/JPEG
-- WebP
-- GIF
 
 ## 技术栈
 
