@@ -1,8 +1,18 @@
-# Google Image Batch Translator
+<p align="center">
+  <img src="icons/icon128.png" alt="Google Image Batch Translator" width="128" height="128">
+</p>
 
-[English](README_EN.md) | [中文](README.md) | [日本語](README_JA.md)
+<h1 align="center">Google Image Batch Translator</h1>
 
-A Chrome browser extension for batch translating images, implemented based on Google's image translation functionality.
+<p align="center">
+  <a href="README_EN.md">English</a> |
+  <a href="README.md">中文</a> |
+  <a href="README_JA.md">日本語</a>
+</p>
+
+<p align="center">
+  A Chrome browser extension for batch translating images, implemented based on Google's image translation functionality.
+</p>
 
 ## Features
 

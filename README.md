@@ -1,8 +1,18 @@
-# Google图片批量翻译
+<p align="center">
+  <img src="icons/icon128.png" alt="Google图片批量翻译" width="128" height="128">
+</p>
 
-[English](README_EN.md) | [中文](README.md) | [日本語](README_JA.md)
+<h1 align="center">Google图片批量翻译</h1>
 
-一个用于批量翻译图片的Chrome浏览器扩展程序，基于Google翻译图片功能实现。
+<p align="center">
+  <a href="README_EN.md">English</a> |
+  <a href="README.md">中文</a> |
+  <a href="README_JA.md">日本語</a>
+</p>
+
+<p align="center">
+  一个用于批量翻译图片的Chrome浏览器扩展程序，基于Google翻译图片功能实现。
+</p>
 
 ## 功能特点
 

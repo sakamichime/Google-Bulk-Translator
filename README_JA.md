@@ -1,8 +1,18 @@
-# Google画像一括翻訳
+<p align="center">
+  <img src="icons/icon128.png" alt="Google画像一括翻訳" width="128" height="128">
+</p>
 
-[English](README_EN.md) | [中文](README.md) | [日本語](README_JA.md)
+<h1 align="center">Google画像一括翻訳</h1>
 
-Google翻訳の画像機能をベースに実装された、画像を一括翻訳するChromeブラウザ拡張機能です。
+<p align="center">
+  <a href="README_EN.md">English</a> |
+  <a href="README.md">中文</a> |
+  <a href="README_JA.md">日本語</a>
+</p>
+
+<p align="center">
+  Google翻訳の画像機能をベースに実装された、画像を一括翻訳するChromeブラウザ拡張機能です。
+</p>
 
 ## 機能特徴
 
