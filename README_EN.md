@@ -62,8 +62,6 @@ A Chrome browser extension for batch translating images, implemented based on Go
 
 - PNG
 - JPG/JPEG
-- WebP
-- GIF
 
 ## Tech Stack
 
