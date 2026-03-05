@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google图片批量翻译</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🖼️ Google图片批量翻译</h1>
+      <p class="subtitle" id="subtitleText">日语 → 中文（简体）</p>
+    </header>
+
+    <div class="status-bar" id="statusBar">
+      <span class="status-icon">●</span>
+      <span class="status-text" id="statusText">准备就绪</span>
+    </div>
+
+    <div class="file-section">
+      <div class="file-input-wrapper">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden>
+        <button class="btn btn-primary" id="selectBtn">
+          <span class="btn-icon">📁</span>
+          选择图片文件
+        </button>
+      </div>
+      <p class="file-hint">支持 JPG、PNG、WebP、GIF 格式</p>
+    </div>
+
+    <div class="file-list-section" id="fileListSection" style="display: none;">
+      <div class="section-header">
+        <h3>已选择的图片 (<span id="fileCount">0</span>)</h3>
+        <button class="btn btn-small btn-secondary" id="clearBtn">清空列表</button>
+      </div>
+      <div class="file-list" id="fileList"></div>
+    </div>
+
+    <div class="progress-section" id="progressSection" style="display: none;">
+      <h3>翻译进度</h3>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-info">
+        <span id="progressText">0 / 0</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="current-file" id="currentFile"></div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-primary" id="openSiteBtn">
+        <span class="btn-icon">🌐</span>
+        打开翻译网站
+      </button>
+      <button class="btn btn-success" id="startBtn" disabled>
+        <span class="btn-icon">▶️</span>
+        开始翻译
+      </button>
+      <button class="btn btn-danger" id="stopBtn" style="display: none;">
+        <span class="btn-icon">⏹️</span>
+        停止翻译
+      </button>
+    </div>
+
+    <div class="settings-section">
+      <h3>语言设置</h3>
+      <div class="language-row">
+        <div class="language-item">
+          <label for="sourceLang">源语言：</label>
+          <select id="sourceLang">
+            <option value="ja">日语</option>
+            <option value="en">英语</option>
+            <option value="ko">韩语</option>
+            <option value="zh-TW">繁体中文</option>
+            <option value="fr">法语</option>
+            <option value="de">德语</option>
+            <option value="es">西班牙语</option>
+            <option value="ru">俄语</option>
+            <option value="auto">自动检测</option>
+          </select>
+        </div>
+        <div class="language-arrow">→</div>
+        <div class="language-item">
+          <label for="targetLang">目标语言：</label>
+          <select id="targetLang">
+            <option value="zh-CN" selected>中文（简体）</option>
+            <option value="zh-TW">中文（繁体）</option>
+            <option value="ja">日语</option>
+            <option value="en">英语</option>
+            <option value="ko">韩语</option>
+            <option value="fr">法语</option>
+            <option value="de">德语</option>
+            <option value="es">西班牙语</option>
+            <option value="ru">俄语</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>高级设置</h3>
+      <div class="setting-item">
+        <label for="downloadDelay">翻译等待时间（毫秒）：</label>
+        <input type="number" id="downloadDelay" value="3000" min="1000" max="30000" step="500">
+        <span class="setting-hint">等待翻译完成的时间</span>
+      </div>
+      <div class="setting-item">
+        <button class="btn btn-small btn-secondary" id="testConnectionBtn">
+          🔌 测试连接
+        </button>
+        <span class="setting-hint">测试与Google翻译页面的连接</span>
+      </div>
+      <div class="setting-item">
+        <label>
+          <input type="checkbox" id="showOverlay" checked>
+          显示翻译进度遮罩
+        </label>
+      </div>
+      <div class="setting-item">
+        <label>
+          <input type="checkbox" id="retryOnError" checked>
+          翻译失败时自动重试
+        </label>
+      </div>
+    </div>
+
+    <div class="log-section" id="logSection" style="display: none;">
+      <h3>日志</h3>
+      <div class="log-container" id="logContainer"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

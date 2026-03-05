@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create extension zip
+        run: |
+          zip -r "google-image-translator-${{ steps.get_version.outputs.VERSION }}.zip" \
+            manifest.json \
+            background/ \
+            content/ \
+            icons/ \
+            popup/ \
+            README.md \
+            README_EN.md \
+            README_JA.md \
+            -x "*.git*" \
+            -x "*.github*"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            google-image-translator-*.zip
+          generate_release_notes: true
+          name: "Release ${{ steps.get_version.outputs.VERSION }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

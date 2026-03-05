@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Google图片批量翻译",
+  "version": "1.0.0",
+  "description": "批量上传图片到Google翻译进行翻译并自动下载翻译结果，支持多语言选择",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://translate.google.com/*",
+    "https://translate.google.com.hk/*",
+    "https://translate.google.co.jp/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://translate.google.com/*",
+        "https://translate.google.com.hk/*",
+        "https://translate.google.co.jp/*"
+      ],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+/**
+ * Google图片批量翻译 - 内容脚本样式
+ * 
+ * 功能说明：
+ * 定义插件面板、按钮、文件列表、进度条等UI组件的样式
+ * 
+ * @author Google图片批量翻译插件
+ * @version 1.0.0
+ */
+
+/* ============================================
+   主面板样式
+   ============================================ */
+
+/* 主面板容器 */
+.gt-auto-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 360px;
+  max-height: calc(100vh - 100px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 面板内所有元素使用border-box */
+.gt-auto-panel * {
+  box-sizing: border-box !important;
+}
+
+/* 面板头部 */
+.gt-auto-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  color: white;
+  cursor: move;
+}
+
+/* 面板标题 */
+.gt-auto-panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 关闭按钮 */
+.gt-auto-panel-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.gt-auto-panel-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 面板主体内容区域 */
+.gt-auto-panel-body {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ============================================
+   分区样式
+   ============================================ */
+
+/* 分区容器 */
+.gt-auto-section {
+  margin-bottom: 16px;
+}
+
+.gt-auto-section:last-child {
+  margin-bottom: 0;
+}
+
+/* 分区标题 */
+.gt-auto-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================
+   文件选择区域样式
+   ============================================ */
+
+/* 文件拖放区域 */
+.gt-auto-file-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fafafa;
+}
+
+.gt-auto-file-area:hover {
+  border-color: #4285f4;
+  background: #f0f7ff;
+}
+
+.gt-auto-file-area.dragover {
+  border-color: #4285f4;
+  background: #e8f0fe;
+}
+
+/* 文件图标 */
+.gt-auto-file-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+/* 文件选择文字 */
+.gt-auto-file-text {
+  font-size: 13px;
+  color: #666;
+}
+
+/* 文件选择提示 */
+.gt-auto-file-hint {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* 隐藏的文件输入框 */
+.gt-auto-file-input {
+  display: none;
+}
+
+/* ============================================
+   语言选择样式
+   ============================================ */
+
+/* 语言选择行 */
+.gt-auto-lang-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 语言选择项 */
+.gt-auto-lang-item {
+  flex: 1;
+}
+
+.gt-auto-lang-item label {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.gt-auto-lang-item select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+}
+
+/* 语言箭头 */
+.gt-auto-lang-arrow {
+  color: #999;
+  font-size: 16px;
+  padding-top: 18px;
+}
+
+/* ============================================
+   文件列表样式
+   ============================================ */
+
+/* 文件列表容器 */
+.gt-auto-file-list {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* 文件列表项 */
+.gt-auto-file-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+}
+
+.gt-auto-file-item:last-child {
+  border-bottom: none;
+}
+
+/* 文件状态样式 */
+.gt-auto-file-item.pending {
+  color: #666;
+}
+
+.gt-auto-file-item.processing {
+  color: #4285f4;
+  background: #e8f0fe;
+}
+
+.gt-auto-file-item.completed {
+  color: #34a853;
+}
+
+.gt-auto-file-item.error {
+  color: #ea4335;
+}
+
+/* 文件项图标 */
+.gt-auto-file-item-icon {
+  margin-right: 8px;
+}
+
+/* 文件名 */
+.gt-auto-file-item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 文件状态文字 */
+.gt-auto-file-item-status {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* 文件序号 */
+.gt-auto-file-item-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #e8f0fe;
+  border-radius: 50%;
+  font-size: 11px;
+  color: #4285f4;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+/* 移除按钮 */
+.gt-auto-file-item-remove {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.gt-auto-file-item-remove:hover {
+  background: #fee2e2;
+  color: #ea4335;
+}
+
+/* 拖拽状态 */
+.gt-auto-file-item.dragging {
+  opacity: 0.5;
+  background: #e8f0fe;
+}
+
+.gt-auto-file-item[draggable="true"] {
+  cursor: grab;
+}
+
+.gt-auto-file-item[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* ============================================
+   进度条样式
+   ============================================ */
+
+/* 进度条容器 */
+.gt-auto-progress {
+  margin-top: 12px;
+}
+
+/* 进度条轨道 */
+.gt-auto-progress-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* 进度条填充 */
+.gt-auto-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4285f4, #34a853);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* 进度文字 */
+.gt-auto-progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* ============================================
+   按钮样式
+   ============================================ */
+
+/* 按钮容器 */
+.gt-auto-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* 通用按钮样式 */
+.gt-auto-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.gt-auto-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 主要按钮（蓝色） */
+.gt-auto-btn-primary {
+  background: #4285f4;
+  color: white;
+}
+
+.gt-auto-btn-primary:hover:not(:disabled) {
+  background: #3367d6;
+}
+
+/* 成功按钮（绿色） */
+.gt-auto-btn-success {
+  background: #34a853;
+  color: white;
+}
+
+.gt-auto-btn-success:hover:not(:disabled) {
+  background: #2d8e47;
+}
+
+/* 危险按钮（红色） */
+.gt-auto-btn-danger {
+  background: #ea4335;
+  color: white;
+}
+
+.gt-auto-btn-danger:hover:not(:disabled) {
+  background: #c5372c;
+}
+
+/* 次要按钮（灰色） */
+.gt-auto-btn-secondary {
+  background: #f1f3f4;
+  color: #333;
+}
+
+.gt-auto-btn-secondary:hover:not(:disabled) {
+  background: #e8eaed;
+}
+
+/* 小按钮 */
+.gt-auto-btn-small {
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #666;
+}
+
+.gt-auto-btn-small:hover:not(:disabled) {
+  background: #f5f5f5;
+}
+
+/* ============================================
+   头部操作区域样式
+   ============================================ */
+
+/* 头部操作按钮容器 */
+.gt-auto-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 语言选择下拉框 */
+.gt-auto-lang-select {
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: white;
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gt-auto-lang-select option {
+  background: white;
+  color: #333;
+  padding: 4px;
+}
+
+/* ============================================
+   提示区域样式
+   ============================================ */
+
+/* 顶部提示条 */
+.gt-auto-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #fff3e0;
+  border-bottom: 1px solid #ffe0b2;
+  font-size: 12px;
+  color: #e65100;
+}
+
+/* ============================================
+   设置区域样式
+   ============================================ */
+
+/* 设置容器 */
+.gt-auto-settings {
+  margin-top: 12px;
+}
+
+/* 设置项 */
+.gt-auto-setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.gt-auto-setting-item:last-child {
+  border-bottom: none;
+}
+
+.gt-auto-setting-item label {
+  font-size: 12px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gt-auto-setting-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.gt-auto-setting-item input[type="number"] {
+  width: 80px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* ============================================
+   日志区域样式
+   ============================================ */
+
+/* 日志容器 */
+.gt-auto-log {
+  margin-top: 12px;
+  max-height: 120px;
+  overflow-y: auto;
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+  font-family: monospace;
+}
+
+/* 日志条目 */
+.gt-auto-log-entry {
+  padding: 2px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.gt-auto-log-entry:last-child {
+  border-bottom: none;
+}
+
+/* 日志级别样式 */
+.gt-auto-log-entry.info {
+  color: #333;
+}
+
+.gt-auto-log-entry.success {
+  color: #34a853;
+}
+
+.gt-auto-log-entry.warn {
+  color: #fbbc04;
+}
+
+.gt-auto-log-entry.error {
+  color: #ea4335;
+}
+
+/* 日志时间 */
+.gt-auto-log-time {
+  color: #999;
+  margin-right: 6px;
+}
+
+/* ============================================
+   切换按钮样式
+   ============================================ */
+
+/* 浮动切换按钮 */
+.gt-auto-toggle-btn {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(66, 133, 244, 0.4);
+  z-index: 999998;
+  transition: transform 0.2s;
+}
+
+.gt-auto-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   模态框样式
+   ============================================ */
+
+/* 遮罩层 */
+.gt-auto-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.gt-auto-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 模态框 */
+.gt-auto-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 加载动画 */
+.gt-auto-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4285f4;
+  border-radius: 50%;
+  animation: gt-spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes gt-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 模态框标题 */
+.gt-auto-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* 模态框状态文字 */
+.gt-auto-modal-status {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* 模态框文件名显示 */
+.gt-auto-modal-filename {
+  font-size: 12px;
+  color: #888;
+  background: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================
+   其他组件样式
+   ============================================ */
+
+/* 清除按钮 */
+.gt-auto-clear-btn {
+  padding: 4px 10px;
+  font-size: 11px;
+  background: #f1f3f4;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #666;
+}
+
+.gt-auto-clear-btn:hover {
+  background: #e8eaed;
+}
+
+/* 计数显示 */
+.gt-auto-count {
+  font-size: 11px;
+  color: #666;
+  margin-left: 8px;
+}
+
+/* 状态栏 */
+.gt-auto-status-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin-top: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 12px;
+  gap: 8px;
+}
+
+/* 状态栏样式变体 */
+.gt-auto-status-bar.ready {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.gt-auto-status-bar.warning {
+  background: #fff3e0;
+  color: #e65100;
+}
